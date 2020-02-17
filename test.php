@@ -1,28 +1,24 @@
-<?php
-
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-
-
-require "vendor/autoload.php";
-
-$access_token = 'MO0zl4hl3Qo8uQyiE0bB6uwIvmFXetyr2RDu+B7CH89EgTIxfUx+Le7RNoG2x49IN+CNMK5HLHm1KzzzIFV0wmECgJSBvuF3bk2N9sJku7SFLAPvLRWAFOqa4YDWeehMLg7yNvDiBvz4F+t+7T8IGQdB04t89/1O/w1cDnyilFU=';
-
-$channelSecret = 'd70897e2f43c3699be558305d86910ff';
-
-$pushID = 'Udeceabcc396d09173b50fe4c959f2809';
-
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(''.$firstname.' '.$lastname.'');
-$response = $bot->pushMessage($pushID, $textMessageBuilder);
-
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
-
-?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="botpush.php" method="POST">
+        <div>
+            <label for="firstname">ชื่อ </label>
+            <input name="firstname" id="firstname" type="lastname" value="">
+        </div> 
+        <div class="form-group col-md-2 col-6">
+            <label for="lastname">นามสกุล</label>
+            <input name="lastname" id="lastname" type="text" value="">
+        </div> 
+        <button type="submit" name="submit" id="submit"> เพิ่มผู้เช่า</button>
+    </form>
+</body>
+</html>
 
 
 
